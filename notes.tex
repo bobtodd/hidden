@@ -1,7 +1,14 @@
 \documentclass[12pt]{article}
 
-\usepackage{amsmath}
+\usepackage{amsmath,amsthm}
 \usepackage{bm} % bold-math, for getting boldface Greek letters
+\usepackage{bbm} % to get blackboard-bold fonts, including double-stroke 1
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma} % including [thm] this way keeps Theorem and Lemma on the same numbering system
+\newtheorem{prop}[thm]{Proposition}
+
+\newcommand{\heq}{\stackrel{\heartsuit}{=}}
 
 \title{For Whom the Bell Tunnels}
 \author{Just Us}
@@ -9,9 +16,73 @@
 \begin{document}
 \maketitle
 
-How in tarnation do we show that the eigenvalues are
+In \cite[p.448]{Bell1966} we find the discussion of a spin-$\frac{1}{2}$ system.  In particular we look at the action of the operator
 \begin{displaymath}
-  \alpha \pm |\bm{\beta}|?
+  \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}
 \end{displaymath}
+on a spin--$\frac{1}{2}$ vector $\psi$.  Here $\mathbbm{1}$ is the 2--dimensional unit matrix, and $\bm{\sigma}$ is the vector whose components comprise the individual Pauli spin matrices:
+\begin{align*}
+  \sigma_1 &:= \begin{pmatrix}
+                 0 & 1 \\
+                 1 & 0
+               \end{pmatrix},
+              \\
+  \sigma_2 &:= \begin{pmatrix}
+                 0 & -i \\
+                 i & 0
+               \end{pmatrix},
+              \\
+  \sigma_3 &:= \begin{pmatrix}
+                 1 & 0 \\
+                 0 & -1
+               \end{pmatrix}.
+\end{align*}
+$\bm{\beta}$ is some 3--dimensional vector of coefficients.
+
+\begin{prop}[Eigenvalues]
+  The operator $\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}$ operating on a spin--$\frac{1}{2}$ vector $\psi$ has eigenvalues
+  \begin{displaymath}
+    \alpha \pm |\bm{\beta}|.
+  \end{displaymath}
+\end{prop}
+
+\begin{proof}[Calculation of eigenvalues]
+  We seek to solve the following equation:
+  \begin{displaymath}
+    (\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}) \psi = \lambda \psi
+  \end{displaymath}
+  for some complex number $\lambda$.  That is, we look for
+  \begin{displaymath}
+    (\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} - \lambda \mathbbm{1}) \psi = 0.
+  \end{displaymath}
+  Thus we are looking for the nullity of the operator in parentheses.  The corresponding eigenvalues are given by the zeroes of the determinant.  Thus we look for $\lambda$ satisfying
+  \begin{displaymath}
+    \det [(\alpha - \lambda) \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}] \heq 0.
+  \end{displaymath}
+  In components, the given operator is
+  \begin{displaymath}
+    \begin{pmatrix}
+      \alpha + \beta_3 - \lambda & \beta_1 - i \beta_2 \\
+      \beta_1 + i \beta_2 & \alpha - \beta_3 - \lambda
+    \end{pmatrix}.
+  \end{displaymath}
+  The characteristic equation therefore yields
+  \begin{displaymath}
+    \begin{split}
+      0 &\heq (\alpha + \beta_3 - \lambda)(\alpha - \beta_3 - \lambda) - (\beta_1 + i \beta_2) (\beta_1 - i \beta_2) \\
+      &= (\alpha + \beta_3)(\alpha - \beta_3) - (\alpha + \beta_3) \lambda - (\alpha - \beta_3) \lambda + \lambda^2 - \left[\beta_1^2 - (i\beta_2)^2 \right] \\
+      &= \lambda^2 -2\alpha\lambda + \left(\alpha^2 - |\bm{\beta}|^2\right).
+    \end{split}
+  \end{displaymath}
+  Applying the quadratic formula, this leaves us with
+  \begin{displaymath}
+    \lambda = \frac{2\alpha \pm \sqrt{4\alpha^2 - 4 \cdot 1 \cdot \left(\alpha^2 - |\bm{\beta}|^2\right)}}{2 \cdot 1}
+    = \alpha \pm |\bm{\beta}|,
+  \end{displaymath}
+  as desired.
+\end{proof}
+
+\bibliographystyle{plain}
+\bibliography{notes}
 
 \end{document}
