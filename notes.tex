@@ -11,7 +11,7 @@
 \newcommand{\heq}{\stackrel{\heartsuit}{=}}
 
 \title{For Whom the Bell Tunnels}
-\author{Just Us}
+\author{T `n' T}
 
 \begin{document}
 \maketitle
@@ -81,6 +81,67 @@ $\bm{\beta}$ is some 3--dimensional vector of coefficients.
   \end{displaymath}
   as desired.
 \end{proof}
+
+\bigskip
+
+The section following the above calculation in \cite{Bell1966} then goes on to introduce a ``hidden variable'' $\lambda$ (unrelated to the $\lambda$ used above).  By design, this variable removes any indeterminacy as to which state the spinor $\psi$ is actually in.  That is, without the use of the ancillary variable $\lambda$, all we can say is that when we measure the quantity corresponding to the operator $\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}$, the measurement must return an eigenvalue of the operator: either $\alpha + |\bm{\beta}|$ or $\alpha - |\bm{\beta}|$, but we don't know which of these will result before making the measurement.  However, by incorporating the information of the hidden variable $\lambda$, by virtue of what we mean by the phrase ``hidden variable'', this information should be sufficient to tell us beforehand which of the two possible eigenvalues will result from the measurement.  Equation (3) of \cite{Bell1966} is the \emph{specification} of just such a rule: the eigenvalue that results from any measurement will be determined by the value of $\lambda$ according to the rule
+\begin{equation}
+  \label{eq:hiddenvariablestipulation}
+  \alpha + |\bm{\beta}| \operatorname{sgn} \left( \lambda|\bm{\beta}| + \frac{1}{2} |\beta_z| \right) \operatorname{sgn} X,
+\end{equation}
+where
+\begin{displaymath}
+  X =
+  \begin{cases}
+    \beta_z & \text{if $\beta_z \not= 0$},\\
+    \beta_x & \text{if $\beta_z = 0$, but $\beta_x \not= 0$},\\
+    \beta_y & \text{if $\beta_z = 0$ and $\beta_x =0$}.
+  \end{cases}
+\end{displaymath}
+That is, $X$ is the first non-zero component of $\bm{\beta}$, taken in the order $z, x, y$.
+
+How do we know that $\lambda$ specifies the eigenvalue in the way given by eqn.~(\ref{eq:hiddenvariablestipulation})?  We don't.  But we're talking completely generally at this point: we're creating a spin--$\frac{1}{2}$ system and asserting that it behaves in the manner given by eqn.~(\ref{eq:hiddenvariablestipulation}).  The proper question is in fact, is the stipulation provided by eqn.~(\ref{eq:hiddenvariablestipulation}) an \emph{allowable} stipulation according to the framework of quantum mechanics?  To answer that, we must ask a different question: what constraints must this specification satisfy?  This seems to be the point behind the calculation that follows eqn.~(3) in \cite{Bell1966}: an average over all variables, including the hidden variables, must give us the proper expectation value.
+
+To calculate the expectation value, we recall that this particular model specifies $-\frac{1}{2} \le \lambda \le \frac{1}{2}$.  Then we seek to calculate the average of the quantity in parentheses in eqn.~(\ref{eq:hiddenvariablestipulation}):
+\begin{displaymath}
+  \int_{-\frac{1}{2}}^{\frac{1}{2}} \operatorname{sgn} \left( \lambda|\bm{\beta}| + \frac{1}{2} |\beta_z| \right) d\lambda.
+\end{displaymath}
+We note that
+\begin{displaymath}
+  \lambda|\bm{\beta}| + \frac{1}{2} |\beta_z| \ge 0 \qquad \text{when} \qquad \lambda \ge \frac{|\beta_z|}{2|\bm{\beta}|}.
+\end{displaymath}
+Then we have
+\begin{displaymath}
+  \begin{split}
+    \int_{-\frac{1}{2}}^{\frac{1}{2}} \operatorname{sgn} \left( \lambda|\bm{\beta}| + \frac{1}{2} |\beta_z| \right) d\lambda
+    &= \int_{-1/2}^{\frac{|\beta_z|}{2|\bm{\beta}|}} (-1) d\lambda + \int_{\frac{|\beta_z|}{2|\bm{\beta}|}}^{\frac{1}{2}} (+1) d\lambda \\
+    &= \left( \frac{1}{2} - \frac{|\beta_z|}{2|\bm{\beta}|} \right) - \left( \frac{|\beta_z|}{2|\bm{\beta}|} + \frac{1}{2} \right) \\
+    &= \frac{|\beta_z|}{|\bm{\beta}|}.
+  \end{split}
+\end{displaymath}
+Now, given our specification in eqn.~(\ref{eq:hiddenvariablestipulation}), the expectation of the operator $\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}$ is given by
+\begin{displaymath}
+  \begin{split}
+    \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle
+    &= \int_{-\frac{1}{2}}^{\frac{1}{2}} \left\{ \alpha + |\bm{\beta}| \operatorname{sgn} \left( \lambda|\bm{\beta}| + \frac{1}{2} |\beta_z| \right) \operatorname{sgn} X \right\} d\lambda \\
+    &= \alpha + |\bm{\beta}| \operatorname{sgn} X \int_{-\frac{1}{2}}^{\frac{1}{2}} \operatorname{sgn} \left( \lambda|\bm{\beta}| + \frac{1}{2} |\beta_z| \right) d\lambda \\
+    &= \alpha + |\bm{\beta}| \operatorname{sgn} X \frac{|\beta_z|}{|\bm{\beta}|} \\
+    &= \alpha + \beta_z,
+  \end{split}
+\end{displaymath}
+precisely because \cite{Bell1966} has chosen coordinates where $\psi$ lies along the $z$-axis, so that $X = \beta_z \not= 0$.
+
+It seems that the point here is that, without the hidden variable, the expectation value of the operator $\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}$ should be $\alpha$, since its eigenvalues are equally probable, and we have
+\begin{displaymath}
+  \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle
+  = \frac{1}{2} \left( \alpha + |\bm{\beta}| \right) + \frac{1}{2} \left( \alpha - |\bm{\beta}| \right)
+  = \alpha.
+\end{displaymath}
+However, by incorporating the hidden variable $\lambda$, not only can we decisively say which eigenvalue will result, but even the expectation value itself is skewed in the direction of the proper state:
+\begin{displaymath}
+  \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\lambda} = \alpha + \beta_z.
+\end{displaymath}
+That is, within the standard quantum mechanical formalism (referred to in \cite{Bell1966} as von Neumann's formulation), we can construct a spin--$\frac{1}{2}$ system whereby knowledge of the hidden variable allows the formalism itself to chose unambiguously the \emph{actual} state of the system.
 
 \bibliographystyle{plain}
 \bibliography{notes}
