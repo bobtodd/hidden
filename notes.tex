@@ -26,12 +26,12 @@ on a spin--$\frac{1}{2}$ vector $\psi$.  Here $\mathbbm{1}$ is the 2--dimensiona
                  0 & 1 \\
                  1 & 0
                \end{pmatrix},
-              \\
+              &
   \sigma_2 &:= \begin{pmatrix}
                  0 & -i \\
                  i & 0
                \end{pmatrix},
-              \\
+              &
   \sigma_3 &:= \begin{pmatrix}
                  1 & 0 \\
                  0 & -1
@@ -142,6 +142,28 @@ However, by incorporating the hidden variable $\lambda$, not only can we decisiv
   \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\lambda} = \alpha + \beta_z.
 \end{displaymath}
 That is, within the standard quantum mechanical formalism (referred to in \cite{Bell1966} as von Neumann's formulation), we can construct a spin--$\frac{1}{2}$ system whereby knowledge of the hidden variable allows the formalism itself to chose unambiguously the \emph{actual} state of the system.
+
+Let us try to unpack a little more the statements made leading up to equation (3) in \cite[p.448]{Bell1966}.  In particular Bell states
+\begin{quotation}
+  \begin{small}
+    The dispersion free states are specified by a real number $\lambda$, in the interval $-\frac{1}{2} \le \lambda \le \frac{1}{2}$ as well as the spinor $\psi$. To describe how $\lambda$ determines which eigenvalue the measurement gives, we note that by a rotation of coordinates $\psi$ can be brought to the form
+    \begin{displaymath}
+      \psi =
+      \begin{pmatrix}
+        1 \\
+        0
+      \end{pmatrix}.
+    \end{displaymath}
+    Let $\beta_x, \beta_y, \beta_z$ be the components of $\bm{\beta}$ in the new coordinate system. Then measurement of $\alpha + \bm{\beta} \cdot \bm{\sigma}$ on the state specified by $\psi$ and $\lambda$ results with certainty in the eigenvalue...
+  \end{small}
+\end{quotation}
+and there follows the expression given above in eqn.~(\ref{eq:hiddenvariablestipulation}).  It seems that part of what's being left unsaid is that, from the standpoint of an adherent of a hidden variable theory, the physical system is always \emph{in one particular state} or the other.  The notion of being in a superposition of states, e.g.\ $\phi = a_{+} \psi_{+} + a_{-} \psi_{-}$, is a mathematical construct but not supposed to be a reflection of the underlying reality.
+
+Given that perspective on the physical reality, then to decide which state the physical system is \emph{really} in, we need simply to know what eigenvalue the measurement will return.  If the measurement returns $\alpha + |\bm{\beta}|$, then the system is in the state $\psi_{+}$; if $\alpha - |\bm{\beta}|$, then the state $\psi_{-}$.  In some sense this isn't really anything new, until we add the stipulation that we should be able to say which state the system is in \emph{before} we make a measurement, solely based on our knowledge of the value of the hidden variable $\lambda$.\footnote{Really what we achieve by this construction is that we avoid the necessity of imposing a magical mechanism of ``collapsing the wave function''.  Such a collapse is necessitated by the view that the system can be \emph{in} a state which is a superposition of base states.  The construction here says that, no, the system was in one of the base states all along, and was never in a superposition.}
+
+Eqn.~(\ref{eq:hiddenvariablestipulation}) then provides one particular instance for how one could arrange such a hidden variable $\lambda$.  Given the value of $\lambda$, then we know from eqn.~(\ref{eq:hiddenvariablestipulation}) which eigenvalue we \emph{will} measure, and so we know what state the system is in \emph{before} we make any measurement.  That's how a hidden variable should work.  The interesting feature, and the focus of the discussion, is that this particular setup seems permissible within the framework of standard quantum mechanics.
+
+We might also take a moment to note some features of $\lambda$.  It seems that Bell falls into the typical practice of physicists which assumes that any random variable is uniformly distributed unless otherwise stated.\footnote{Really there are only two distributions that ever come up in standard presentations of physics: the uniform and the gaussian.  Since Bell makes no mention of the gaussian, we fall back to the uniform distribution.}  This agrees with the calculation that follows, since the integral expression presented in the calculation for $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\lambda}$ shows no particular probability density other than the implied constant density.
 
 \bibliographystyle{plain}
 \bibliography{notes}
