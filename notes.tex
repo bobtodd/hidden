@@ -4,6 +4,8 @@
 \usepackage{bm} % bold-math, for getting boldface Greek letters
 \usepackage{bbm} % to get blackboard-bold fonts, including double-stroke 1
 
+\usepackage[colorinlistoftodos]{todonotes}
+
 \newtheorem{thm}{Theorem}
 \newtheorem{lem}[thm]{Lemma} % including [thm] this way keeps Theorem and Lemma on the same numbering system
 \newtheorem{prop}[thm]{Proposition}
@@ -15,6 +17,9 @@
 
 \begin{document}
 \maketitle
+\listoftodos
+
+\bigskip
 
 In \cite[p.448]{Bell1966} we find the discussion of a spin-$\frac{1}{2}$ system.  In particular we look at the action of the operator
 \begin{displaymath}
@@ -108,14 +113,14 @@ To calculate the expectation value, we recall that this particular model specifi
 \end{displaymath}
 We note that
 \begin{displaymath}
-  \lambda|\bm{\beta}| + \frac{1}{2} |\beta_z| \ge 0 \qquad \text{when} \qquad \lambda \ge \frac{|\beta_z|}{2|\bm{\beta}|}.
+  \lambda|\bm{\beta}| + \frac{1}{2} |\beta_z| \ge 0 \qquad \text{when} \qquad \lambda \ge -\frac{|\beta_z|}{2|\bm{\beta}|}.
 \end{displaymath}
 Then we have
 \begin{displaymath}
   \begin{split}
     \int_{-\frac{1}{2}}^{\frac{1}{2}} \operatorname{sgn} \left( \lambda|\bm{\beta}| + \frac{1}{2} |\beta_z| \right) d\lambda
-    &= \int_{-1/2}^{\frac{|\beta_z|}{2|\bm{\beta}|}} (-1) d\lambda + \int_{\frac{|\beta_z|}{2|\bm{\beta}|}}^{\frac{1}{2}} (+1) d\lambda \\
-    &= \left( \frac{1}{2} - \frac{|\beta_z|}{2|\bm{\beta}|} \right) - \left( \frac{|\beta_z|}{2|\bm{\beta}|} + \frac{1}{2} \right) \\
+    &= \int_{-1/2}^{-\frac{|\beta_z|}{2|\bm{\beta}|}} (-1) d\lambda + \int_{-\frac{|\beta_z|}{2|\bm{\beta}|}}^{\frac{1}{2}} (+1) d\lambda \\
+    &= \left( \frac{1}{2} + \frac{|\beta_z|}{2|\bm{\beta}|} \right) - \left( -\frac{|\beta_z|}{2|\bm{\beta}|} + \frac{1}{2} \right) \\
     &= \frac{|\beta_z|}{|\bm{\beta}|}.
   \end{split}
 \end{displaymath}
@@ -159,9 +164,39 @@ Let us try to unpack a little more the statements made leading up to equation (3
 \end{quotation}
 and there follows the expression given above in eqn.~(\ref{eq:hiddenvariablestipulation}).  It seems that part of what's being left unsaid is that, from the standpoint of an adherent of a hidden variable theory, the physical system is always \emph{in one particular state} or the other.  The notion of being in a superposition of states, e.g.\ $\phi = a_{+} \psi_{+} + a_{-} \psi_{-}$, is a mathematical construct but not supposed to be a reflection of the underlying reality.
 
-Given that perspective on the physical reality, then to decide which state the physical system is \emph{really} in, we need simply to know what eigenvalue the measurement will return.  If the measurement returns $\alpha + |\bm{\beta}|$, then the system is in the state $\psi_{+}$; if $\alpha - |\bm{\beta}|$, then the state $\psi_{-}$.  In some sense this isn't really anything new, until we add the stipulation that we should be able to say which state the system is in \emph{before} we make a measurement, solely based on our knowledge of the value of the hidden variable $\lambda$.\footnote{Really what we achieve by this construction is that we avoid the necessity of imposing a magical mechanism of ``collapsing the wave function''.  Such a collapse is necessitated by the view that the system can be \emph{in} a state which is a superposition of base states.  The construction here says that, no, the system was in one of the base states all along, and was never in a superposition.}
+Given that perspective on the physical reality, then to decide which state the physical system is \emph{really} in, we need simply to know what eigenvalue the measurement will return.  If the measurement returns $\alpha + |\bm{\beta}|$, then the system is in the state $\psi_{+}$; if $\alpha - |\bm{\beta}|$, then the state $\psi_{-}$.  We can see this directly from the calculation of the expectation value of the operator $\alpha + \bm{\beta} \cdot \bm{\sigma}$ on the particular form of the state $\psi$ in Bell's quote above:\todo{Maybe we need to see what this calculation gives for all values of $X$.}
+\begin{displaymath}
+  \begin{split}
+    \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi}
+    &= \langle \psi | \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} | \psi \rangle \\
+    &=
+    \begin{pmatrix}
+      1 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+      \alpha + \beta_z & \beta_x - i \beta_y \\
+      \beta_x + i \beta_y & \alpha - \beta_z
+    \end{pmatrix}.
+    \begin{pmatrix}
+      1 \\
+      0
+    \end{pmatrix}
+    \\
+    &=
+    \begin{pmatrix}
+      1 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+      \alpha + \beta_z \\
+      \beta_x + i\beta_y
+    \end{pmatrix}
+    \\
+    &= \alpha + \beta_z.
+  \end{split}
+\end{displaymath}
+So in some sense this isn't really anything new, until we add the stipulation that we should be able to say which state the system is in \emph{before} we make a measurement, solely based on our knowledge of the value of the hidden variable $\lambda$.\footnote{Really what we achieve by this construction is that we avoid the necessity of imposing a magical mechanism of ``collapsing the wave function''.  Such a collapse is necessitated by the view that the system can be \emph{in} a state which is a superposition of base states.  The construction here says that, no, the system was in one of the base states all along, and was never in a superposition.}  The preceding calculation assumes we know the state $\psi$ before we take the expectation value, whereas the calculation of $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\lambda}$ does not.\todo{Is this really right?}
 
-Eqn.~(\ref{eq:hiddenvariablestipulation}) then provides one particular instance for how one could arrange such a hidden variable $\lambda$.  Given the value of $\lambda$, then we know from eqn.~(\ref{eq:hiddenvariablestipulation}) which eigenvalue we \emph{will} measure, and so we know what state the system is in \emph{before} we make any measurement.  That's how a hidden variable should work.  The interesting feature, and the focus of the discussion, is that this particular setup seems permissible within the framework of standard quantum mechanics.
+Eqn.~(\ref{eq:hiddenvariablestipulation}) then provides one particular instance for how one could arrange such a hidden variable $\lambda$.  Given the value of $\lambda$, then we know from eqn.~(\ref{eq:hiddenvariablestipulation}) which eigenvalue we \emph{will} measure, and so we know what state the system is in \emph{before} we make any measurement.  That's how a hidden variable should work.  The interesting feature, and the focus of the discussion, is that this particular setup seems permissible within the framework of standard quantum mechanics.\todo[color=green!40]{An example todo note in another color.}
 
 We might also take a moment to note some features of $\lambda$.  It seems that Bell falls into the typical practice of physicists which assumes that any random variable is uniformly distributed unless otherwise stated.\footnote{Really there are only two distributions that ever come up in standard presentations of physics: the uniform and the gaussian.  Since Bell makes no mention of the gaussian, we fall back to the uniform distribution.}  This agrees with the calculation that follows, since the integral expression presented in the calculation for $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\lambda}$ shows no particular probability density other than the implied constant density.
 
