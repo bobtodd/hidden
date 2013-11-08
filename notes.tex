@@ -136,7 +136,40 @@ Now, given our specification in eqn.~(\ref{eq:hiddenvariablestipulation}), the e
 \end{displaymath}
 precisely because \cite{Bell1966} has chosen coordinates where $\psi$ lies along the $z$-axis, so that $X = \beta_z \not= 0$.
 
-It seems that the point here is that, without the hidden variable, the expectation value of the operator $\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}$ should be $\alpha$, since its eigenvalues are equally probable, and we have
+It seems that the point here is that, without the hidden variable, the expectation value of the operator $\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}$ should be $\alpha$, since its eigenvalues are equally probable,\footnote{The (normalized) eigenstates of $\alpha \mathbbm{1} +\boldsymbol{\beta}\cdot\boldsymbol{\sigma}$ are
+\begin{align*}
+  \psi_{+}
+  &:= \frac{1}{\sqrt{2|\bm{\beta}|}}
+  \begin{pmatrix}
+    \sqrt{|\bm{\beta}|+\beta_3}\\
+    \dfrac{\beta_1+i\beta_2}{\sqrt{|\bm{\beta}|+\beta_3}}
+  \end{pmatrix},
+  &
+  \psi_{-}
+  &:= \frac{1}{\sqrt{2|\bm{\beta}|}}
+  \begin{pmatrix}
+    -\sqrt{|\bm{\beta}|-\beta_3}\\
+    \dfrac{\beta_1+i\beta_2}{\sqrt{|\bm{\beta}|-\beta_3}}
+  \end{pmatrix}.
+\end{align*}
+$\psi$ is expanded with these eigenstates as follows: 
+\begin{align*}
+  \psi
+  :=
+  \begin{pmatrix}
+    1\\
+    0
+  \end{pmatrix}
+  = \sqrt{\frac{|\bm{\beta}|+\beta_3}{2|\bm{\beta}|}}\psi_{+} - \sqrt{\frac{|\bm{\beta}|-\beta_3}{2|\bm{\beta}|}}\psi_{-}.
+\end{align*}
+Therefore, the probability that we get $\alpha+|\bm{\beta}|$ is $\dfrac{|\bm{\beta}|+\beta_3}{2|\bm{\beta}|}$, while we get $\alpha-|\bm{\beta}|$ with probability $\dfrac{|\bm{\beta}|-\beta_3}{2|\bm{\beta}|}$.
+The expectation value is
+\begin{align*}
+  \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle
+  = \left( \alpha+|\bm{\beta}| \right) \dfrac{|\bm{\beta}|+\beta_3}{2|\bm{\beta}|} + \left( \alpha-|\bm{\beta}| \right) \dfrac{|\bm{\beta}|-\beta_3}{2|\bm{\beta}|}
+  = \alpha + \beta_3.
+\end{align*}
+} and we have \todo{I think you're right that my argument here is wrong. But your calculation is not $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle$, but rather the $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi}$ that I calculate below.}
 \begin{displaymath}
   \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle
   = \frac{1}{2} \left( \alpha + |\bm{\beta}| \right) + \frac{1}{2} \left( \alpha - |\bm{\beta}| \right)
