@@ -21,11 +21,12 @@
 
 \bigskip
 
-In \cite[p.448]{Bell1966} we find the discussion of a spin-$\frac{1}{2}$ system.  In particular we look at the action of the operator
+\section{Assumption, and a simple example}
+In \cite[p.448]{Bell1966} we find the discussion of a spin-$\frac{1}{2}$ system. In particular we look at the action of the operator
 \begin{displaymath}
   \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}
 \end{displaymath}
-on a spin--$\frac{1}{2}$ vector $\psi$.  Here $\mathbbm{1}$ is the 2--dimensional unit matrix, and $\bm{\sigma}$ is the vector whose components comprise the individual Pauli spin matrices:
+on a spin--$\frac{1}{2}$ vector $\psi$. Here $\mathbbm{1}$ is the 2--dimensional unit matrix, and $\bm{\sigma}$ is the vector whose components comprise the individual Pauli spin matrices:
 \begin{align*}
   \sigma_1 &:= \begin{pmatrix}
                  0 & 1 \\
@@ -56,11 +57,11 @@ $\bm{\beta}$ is some 3--dimensional vector of coefficients.
   \begin{displaymath}
     (\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}) \psi = \lambda \psi
   \end{displaymath}
-  for some complex number $\lambda$.  That is, we look for
+  for some complex number $\lambda$. That is, we look for
   \begin{displaymath}
     (\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} - \lambda \mathbbm{1}) \psi = 0.
   \end{displaymath}
-  Thus we are looking for the nullity of the operator in parentheses.  The corresponding eigenvalues are given by the zeroes of the determinant.  Thus we look for $\lambda$ satisfying
+  Thus we are looking for the nullity of the operator in parentheses. The corresponding eigenvalues are given by the zeroes of the determinant. Thus we look for $\lambda$ satisfying
   \begin{displaymath}
     \det [(\alpha - \lambda) \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}] \heq 0.
   \end{displaymath}
@@ -89,7 +90,7 @@ $\bm{\beta}$ is some 3--dimensional vector of coefficients.
 
 \bigskip
 
-The section following the above calculation in \cite{Bell1966} then goes on to introduce a ``hidden variable'' $\lambda$ (unrelated to the $\lambda$ used above).  By design, this variable removes any indeterminacy as to which state the spinor $\psi$ is actually in.  That is, without the use of the ancillary variable $\lambda$, all we can say is that when we measure the quantity corresponding to the operator $\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}$, the measurement must return an eigenvalue of the operator: either $\alpha + |\bm{\beta}|$ or $\alpha - |\bm{\beta}|$, but we don't know which of these will result before making the measurement.  However, by incorporating the information of the hidden variable $\lambda$, by virtue of what we mean by the phrase ``hidden variable'', this information should be sufficient to tell us beforehand which of the two possible eigenvalues will result from the measurement.  Equation (3) of \cite{Bell1966} is the \emph{specification} of just such a rule: the eigenvalue that results from any measurement will be determined by the value of $\lambda$ according to the rule
+The section following the above calculation in \cite{Bell1966} then goes on to introduce a ``hidden variable'' $\lambda$ (unrelated to the $\lambda$ used above). By design, this variable removes any indeterminacy as to which state the spinor $\psi$ is actually in. That is, without the use of the ancillary variable $\lambda$, all we can say is that when we measure the quantity corresponding to the operator $\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}$, the measurement must return an eigenvalue of the operator: either $\alpha + |\bm{\beta}|$ or $\alpha - |\bm{\beta}|$, but we don't know which of these will result before making the measurement. However, by incorporating the information of the hidden variable $\lambda$, by virtue of what we mean by the phrase ``hidden variable'', this information should be sufficient to tell us beforehand which of the two possible eigenvalues will result from the measurement. Equation (3) of \cite{Bell1966} is the \emph{specification} of just such a rule: the eigenvalue that results from any measurement will be determined by the value of $\lambda$ according to the rule
 \begin{equation}
   \label{eq:hiddenvariablestipulation}
   \alpha + |\bm{\beta}| \operatorname{sgn} \left( \lambda|\bm{\beta}| + \frac{1}{2} |\beta_z| \right) \operatorname{sgn} X,
@@ -105,9 +106,9 @@ where
 \end{displaymath}
 That is, $X$ is the first non-zero component of $\bm{\beta}$, taken in the order $z, x, y$.
 
-How do we know that $\lambda$ specifies the eigenvalue in the way given by eqn.~(\ref{eq:hiddenvariablestipulation})?  We don't.  But we're talking completely generally at this point: we're creating a spin--$\frac{1}{2}$ system and asserting that it behaves in the manner given by eqn.~(\ref{eq:hiddenvariablestipulation}).  The proper question is in fact, is the stipulation provided by eqn.~(\ref{eq:hiddenvariablestipulation}) an \emph{allowable} stipulation according to the framework of quantum mechanics?  To answer that, we must ask a different question: what constraints must this specification satisfy?  This seems to be the point behind the calculation that follows eqn.~(3) in \cite{Bell1966}: an average over all variables, including the hidden variables, must give us the proper expectation value.
+How do we know that $\lambda$ specifies the eigenvalue in the way given by eqn.~(\ref{eq:hiddenvariablestipulation})? We don't. But we're talking completely generally at this point: we're creating a spin--$\frac{1}{2}$ system and asserting that it behaves in the manner given by eqn.~(\ref{eq:hiddenvariablestipulation}). The proper question is in fact, is the stipulation provided by eqn.~(\ref{eq:hiddenvariablestipulation}) an \emph{allowable} stipulation according to the framework of quantum mechanics? To answer that, we must ask a different question: what constraints must this specification satisfy? This seems to be the point behind the calculation that follows eqn.~(3) in \cite{Bell1966}: an average over all variables, including the hidden variables, must give us the proper expectation value.
 
-To calculate the expectation value, we recall that this particular model specifies $-\frac{1}{2} \le \lambda \le \frac{1}{2}$.  Then we seek to calculate the average of the quantity in parentheses in eqn.~(\ref{eq:hiddenvariablestipulation}):
+To calculate the expectation value, we recall that this particular model specifies $-\frac{1}{2} \le \lambda \le \frac{1}{2}$. Then we seek to calculate the average of the quantity in parentheses in eqn.~(\ref{eq:hiddenvariablestipulation}):
 \begin{displaymath}
   \int_{-\frac{1}{2}}^{\frac{1}{2}} \operatorname{sgn} \left( \lambda|\bm{\beta}| + \frac{1}{2} |\beta_z| \right) d\lambda.
 \end{displaymath}
@@ -141,18 +142,18 @@ It seems that the point here is that, without the hidden variable, the expectati
   \psi_{+}
   &:= \frac{1}{\sqrt{2|\bm{\beta}|}}
   \begin{pmatrix}
-    \sqrt{|\bm{\beta}|+\beta_3}\\
-    \dfrac{\beta_1+i\beta_2}{\sqrt{|\bm{\beta}|+\beta_3}}
+    \sqrt{|\bm{\beta}|+\beta_z}\\
+    \dfrac{\beta_x+i\beta_y}{\sqrt{|\bm{\beta}|+\beta_z}}
   \end{pmatrix},
   &
   \psi_{-}
   &:= \frac{1}{\sqrt{2|\bm{\beta}|}}
   \begin{pmatrix}
-    -\sqrt{|\bm{\beta}|-\beta_3}\\
-    \dfrac{\beta_1+i\beta_2}{\sqrt{|\bm{\beta}|-\beta_3}}
+    -\sqrt{|\bm{\beta}|-\beta_z}\\
+    \dfrac{\beta_x+i\beta_y}{\sqrt{|\bm{\beta}|-\beta_z}}
   \end{pmatrix}.
 \end{align*}
-$\psi$ is expanded with these eigenstates as follows: 
+$\psi$ is expanded with these eigenstates as follows:
 \begin{align*}
   \psi
   :=
@@ -160,16 +161,17 @@ $\psi$ is expanded with these eigenstates as follows:
     1\\
     0
   \end{pmatrix}
-  = \sqrt{\frac{|\bm{\beta}|+\beta_3}{2|\bm{\beta}|}}\psi_{+} - \sqrt{\frac{|\bm{\beta}|-\beta_3}{2|\bm{\beta}|}}\psi_{-}.
+  = \sqrt{\frac{|\bm{\beta}|+\beta_z}{2|\bm{\beta}|}}\psi_{+} - \sqrt{\frac{|\bm{\beta}|-\beta_z}{2|\bm{\beta}|}}\psi_{-}.
 \end{align*}
-Therefore, the probability that we get $\alpha+|\bm{\beta}|$ is $\dfrac{|\bm{\beta}|+\beta_3}{2|\bm{\beta}|}$, while we get $\alpha-|\bm{\beta}|$ with probability $\dfrac{|\bm{\beta}|-\beta_3}{2|\bm{\beta}|}$.
+Therefore, the probability that we get $\alpha+|\bm{\beta}|$ is $\dfrac{|\bm{\beta}|+\beta_z}{2|\bm{\beta}|}$, while we get $\alpha-|\bm{\beta}|$ with probability $\dfrac{|\bm{\beta}|-\beta_z}{2|\bm{\beta}|}$.
 The expectation value is
 \begin{align*}
   \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle
-  = \left( \alpha+|\bm{\beta}| \right) \dfrac{|\bm{\beta}|+\beta_3}{2|\bm{\beta}|} + \left( \alpha-|\bm{\beta}| \right) \dfrac{|\bm{\beta}|-\beta_3}{2|\bm{\beta}|}
-  = \alpha + \beta_3.
+  = \left( \alpha+|\bm{\beta}| \right) \dfrac{|\bm{\beta}|+\beta_z}{2|\bm{\beta}|} + \left( \alpha-|\bm{\beta}| \right) \dfrac{|\bm{\beta}|-\beta_z}{2|\bm{\beta}|}
+  = \alpha + \beta_z.
 \end{align*}
-} and we have \todo{I think you're right that my argument here is wrong. But your calculation is not $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle$, but rather the $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi}$ that I calculate below.}
+} 
+and we have \todo{I think you're right that my argument here is wrong. But your calculation is not $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle$, but rather the $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi}$ that I calculate below.}
 \begin{displaymath}
   \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle
   = \frac{1}{2} \left( \alpha + |\bm{\beta}| \right) + \frac{1}{2} \left( \alpha - |\bm{\beta}| \right)
@@ -181,7 +183,7 @@ However, by incorporating the hidden variable $\lambda$, not only can we decisiv
 \end{displaymath}
 That is, within the standard quantum mechanical formalism (referred to in \cite{Bell1966} as von Neumann's formulation), we can construct a spin--$\frac{1}{2}$ system whereby knowledge of the hidden variable allows the formalism itself to chose unambiguously the \emph{actual} state of the system.
 
-Let us try to unpack a little more the statements made leading up to equation (3) in \cite[p.448]{Bell1966}.  In particular Bell states
+Let us try to unpack a little more the statements made leading up to equation (3) in \cite[p.448]{Bell1966}. In particular Bell states
 \begin{quotation}
   \begin{small}
     The dispersion free states are specified by a real number $\lambda$, in the interval $-\frac{1}{2} \le \lambda \le \frac{1}{2}$ as well as the spinor $\psi$. To describe how $\lambda$ determines which eigenvalue the measurement gives, we note that by a rotation of coordinates $\psi$ can be brought to the form
@@ -195,9 +197,9 @@ Let us try to unpack a little more the statements made leading up to equation (3
     Let $\beta_x, \beta_y, \beta_z$ be the components of $\bm{\beta}$ in the new coordinate system. Then measurement of $\alpha + \bm{\beta} \cdot \bm{\sigma}$ on the state specified by $\psi$ and $\lambda$ results with certainty in the eigenvalue...
   \end{small}
 \end{quotation}
-and there follows the expression given above in eqn.~(\ref{eq:hiddenvariablestipulation}).  It seems that part of what's being left unsaid is that, from the standpoint of an adherent of a hidden variable theory, the physical system is always \emph{in one particular state} or the other.  The notion of being in a superposition of states, e.g.\ $\phi = a_{+} \psi_{+} + a_{-} \psi_{-}$, is a mathematical construct but not supposed to be a reflection of the underlying reality.
+and there follows the expression given above in eqn.~(\ref{eq:hiddenvariablestipulation}). It seems that part of what's being left unsaid is that, from the standpoint of an adherent of a hidden variable theory, the physical system is always \emph{in one particular state} or the other. The notion of being in a superposition of states, e.g.\ $\phi = a_{+} \psi_{+} + a_{-} \psi_{-}$, is a mathematical construct but not supposed to be a reflection of the underlying reality.
 
-Given that perspective on the physical reality, then to decide which state the physical system is \emph{really} in, we need simply to know what eigenvalue the measurement will return.  If the measurement returns $\alpha + |\bm{\beta}|$, then the system is in the state $\psi_{+}$; if $\alpha - |\bm{\beta}|$, then the state $\psi_{-}$.  We can see this directly from the calculation of the expectation value of the operator $\alpha + \bm{\beta} \cdot \bm{\sigma}$ on the particular form of the state $\psi$ in Bell's quote above:\todo{Maybe we need to see what this calculation gives for all values of $X$.}
+Given that perspective on the physical reality, then to decide which state the physical system is \emph{really} in, we need simply to know what eigenvalue the measurement will return. If the measurement returns $\alpha + |\bm{\beta}|$, then the system is in the state $\psi_{+}$; if $\alpha - |\bm{\beta}|$, then the state $\psi_{-}$. We can see this directly from the calculation of the expectation value of the operator $\alpha + \bm{\beta} \cdot \bm{\sigma}$ on the particular form of the state $\psi$ in Bell's quote above:\todo{Maybe we need to see what this calculation gives for all values of $X$.}
 \begin{displaymath}
   \begin{split}
     \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi}
@@ -227,11 +229,26 @@ Given that perspective on the physical reality, then to decide which state the p
     &= \alpha + \beta_z.
   \end{split}
 \end{displaymath}
-So in some sense this isn't really anything new, until we add the stipulation that we should be able to say which state the system is in \emph{before} we make a measurement, solely based on our knowledge of the value of the hidden variable $\lambda$.\footnote{Really what we achieve by this construction is that we avoid the necessity of imposing a magical mechanism of ``collapsing the wave function''.  Such a collapse is necessitated by the view that the system can be \emph{in} a state which is a superposition of base states.  The construction here says that, no, the system was in one of the base states all along, and was never in a superposition.}  The preceding calculation assumes we know the state $\psi$ before we take the expectation value, whereas the calculation of $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\lambda}$ does not.\todo{Is this really right?}
+So in some sense this isn't really anything new, until we add the stipulation that we should be able to say which state the system is in \emph{before} we make a measurement, solely based on our knowledge of the value of the hidden variable $\lambda$.\footnote{Really what we achieve by this construction is that we avoid the necessity of imposing a magical mechanism of ``collapsing the wave function''. Such a collapse is necessitated by the view that the system can be \emph{in} a state which is a superposition of base states. The construction here says that, no, the system was in one of the base states all along, and was never in a superposition.} The preceding calculation assumes we know the state $\psi$ before we take the expectation value, whereas the calculation of $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\lambda}$ does not.\todo{Is this really right?}
 
-Eqn.~(\ref{eq:hiddenvariablestipulation}) then provides one particular instance for how one could arrange such a hidden variable $\lambda$.  Given the value of $\lambda$, then we know from eqn.~(\ref{eq:hiddenvariablestipulation}) which eigenvalue we \emph{will} measure, and so we know what state the system is in \emph{before} we make any measurement.  That's how a hidden variable should work.  The interesting feature, and the focus of the discussion, is that this particular setup seems permissible within the framework of standard quantum mechanics.\todo[color=green!40]{An example todo note in another color.}
+Eqn.~(\ref{eq:hiddenvariablestipulation}) then provides one particular instance for how one could arrange such a hidden variable $\lambda$. Given the value of $\lambda$, then we know from eqn.~(\ref{eq:hiddenvariablestipulation}) which eigenvalue we \emph{will} measure, and so we know what state the system is in \emph{before} we make any measurement. That's how a hidden variable should work. The interesting feature, and the focus of the discussion, is that this particular setup seems permissible within the framework of standard quantum mechanics.\todo[color=green!40]{An example todo note in another color.}
 
-We might also take a moment to note some features of $\lambda$.  It seems that Bell falls into the typical practice of physicists which assumes that any random variable is uniformly distributed unless otherwise stated.\footnote{Really there are only two distributions that ever come up in standard presentations of physics: the uniform and the gaussian.  Since Bell makes no mention of the gaussian, we fall back to the uniform distribution.}  This agrees with the calculation that follows, since the integral expression presented in the calculation for $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\lambda}$ shows no particular probability density other than the implied constant density.
+We might also take a moment to note some features of $\lambda$. It seems that Bell falls into the typical practice of physicists which assumes that any random variable is uniformly distributed unless otherwise stated.\footnote{Really there are only two distributions that ever come up in standard presentations of physics: the uniform and the gaussian. Since Bell makes no mention of the gaussian, we fall back to the uniform distribution.} This agrees with the calculation that follows, since the integral expression presented in the calculation for $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\lambda}$ shows no particular probability density other than the implied constant density.
+
+\section{von Neumann}
+Let $|\psi\rangle=\sum_{i}a_i|q_i\rangle$, where $\hat{Q}|q_i\rangle = q_i |q_i\rangle$.
+\begin{center}
+\begin{tabular}{c|cc}
+\hline
+ & Expectation & Observation: One of the eigenvaues of $\hat{Q}$ \\  \hline
+Quantum Mechanics & $(\psi, \hat{Q}\psi)/(\psi, \psi)$ & $q_i$ is observed with probability $|a_i|^2$.\\
+Hidden Variable & Average over $\lambda$ & $\lambda$ determines which $q_i$. \\ \hline
+\end{tabular}
+\end{center}
+von Neumann's argument compares the upper left and the lower right. The expectation value and the observed values should not be mixed up. The Quantum mechanical {\it expectation value} is linear in $\alpha$ and $\beta_i$, while the {\it observed value}, $\alpha\pm|\bm{\beta}|$ is not linear in them, but there is nothing wrong. What should be compared are the quantum mechanical expectation value and the averaged value over $\lambda$. The hidden variable theory is build up so that it results in the same results with quantum mechanics.
+
+
+
 
 \bibliographystyle{plain}
 \bibliography{notes}
