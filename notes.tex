@@ -3,8 +3,36 @@
 \usepackage{amsmath,amsthm}
 \usepackage{bm} % bold-math, for getting boldface Greek letters
 \usepackage{bbm} % to get blackboard-bold fonts, including double-stroke 1
+\usepackage{booktabs} % for nice tables
 
 \usepackage[colorinlistoftodos]{todonotes}
+
+\usepackage{color}
+\definecolor{rltred}{rgb}{0.75,0,0}  % used below in hyperref
+\definecolor{rltgreen}{rgb}{0,0.5,0}
+\definecolor{rltblue}{rgb}{0,0,0.75}
+
+% \usepackage[comma,authoryear]{natbib} % In case we change bibliography style
+% \usepackage{hypernat} % handles conflicts between hyperref and natbib
+\usepackage[pdftex,             % comment in if pdftex
+        %xetex,                  % comment in if xetex
+        colorlinks=true,
+        urlcolor=rltblue,       % \href{...}{...} external (URL)
+        filecolor=rltgreen,     % \href{...} local file
+        linkcolor=rltred,       % \ref{...} and \pageref{...}
+        pdftitle={For Whom the Bell Tunnels},
+        pdfauthor={Takahide Okabe, Todd B. Krause},
+        pdfsubject={Quantum Mechanics},
+        pdfkeywords={physics, quantum mechanics, hidden variables},
+        %pdfadjustspacing=1,
+        pagebackref,
+        pdfpagemode=None,
+        %bookmarksopen=true,
+        plainpages=false,       % plainpages and pdfpagelabels to
+        pdfpagelabels,          % get book class pagenumbers right.
+        %hyperfootnotes=false,   % ledmac does crazy things with
+        %debug=true%             % footnotes, and hyperref can't
+        ]{hyperref}             % handle it.
 
 \newtheorem{thm}{Theorem}
 \newtheorem{lem}[thm]{Lemma} % including [thm] this way keeps Theorem and Lemma on the same numbering system
@@ -19,9 +47,36 @@
 \maketitle
 \listoftodos
 
-\bigskip
+\section{Notes on Expectation Values}
+
+Before launching into a discussion of \cite{Bell1966}, we should review a few points about expectation values.\footnote{See the \href{http://en.wikipedia.org/wiki/Expectation_value_\%28quantum_mechanics\%29}{Wikipedia article} for a quick reference.}  If we have a system in a \emph{pure} state $|\psi\rangle$ and we seek to measure a quantity with associated operator $\hat{A}$, then the expectation value of $\hat{A}$ \emph{in that state} is
+\begin{displaymath}
+  \langle \hat{A} \rangle_{\psi} := \langle \psi | \hat{A} | \psi \rangle.
+\end{displaymath}
+Of course, if have some complete orthogonal basis of states $\{ \phi_n \}$, we may expand the pure state $\psi$ in this basis as
+\begin{displaymath}
+  |\psi\rangle = \sum_{n} a_n |\phi_n \rangle,
+\end{displaymath}
+and then the expectation value becomes
+\begin{displaymath}
+  \langle \psi | \hat{A} | \psi \rangle
+  = \langle \psi | \hat{A} \sum_{n} a_n | \phi_n \rangle
+  = \sum_{n} a_n \langle \psi | \hat{A} | \phi_n \rangle.
+\end{displaymath}
+
+The situation is slightly different if we do not have a pure state, but rather a \emph{mixed} state.  In such cases we employ a density operator $\hat{\rho}$ composed of the various individual pure states $| \psi_k \rangle$, expressed as follows:
+\begin{displaymath}
+  \hat{\rho} := \sum_k \rho_k | \psi_k \rangle \langle \psi_k |.
+\end{displaymath}
+Then the expectation value of $\hat{A}$ in this collection of mixed states becomes
+\begin{displaymath}
+  \langle \hat{A} \rangle_{\rho} := \operatorname{trace} (\hat{\rho} \hat{A})
+  = \sum_k \rho_k \langle \psi_k | \hat{A} | \psi_k \rangle
+  = \sum_k \rho_k \langle \hat{A} \rangle_{\psi_k}.
+\end{displaymath}
 
 \section{Assumption, and a simple example}
+
 In \cite[p.448]{Bell1966} we find the discussion of a spin-$\frac{1}{2}$ system. In particular we look at the action of the operator
 \begin{displaymath}
   \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}
@@ -171,7 +226,7 @@ The expectation value is
   = \alpha + \beta_z.
 \end{align*}
 } 
-and we have \todo{I think you're right that my argument here is wrong. But your calculation is not $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle$, but rather the $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi}$ that I calculate below.}
+and we have \todo{I think I'm assuming here that the system is in a mixed state of $\psi_{+}$ \& $\psi_{-}$, with $\rho_{\pm} = \frac{1}{2}$. See $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi_{\pm}}$.}
 \begin{displaymath}
   \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle
   = \frac{1}{2} \left( \alpha + |\bm{\beta}| \right) + \frac{1}{2} \left( \alpha - |\bm{\beta}| \right)
@@ -202,8 +257,8 @@ and there follows the expression given above in eqn.~(\ref{eq:hiddenvariablestip
 Given that perspective on the physical reality, then to decide which state the physical system is \emph{really} in, we need simply to know what eigenvalue the measurement will return. If the measurement returns $\alpha + |\bm{\beta}|$, then the system is in the state $\psi_{+}$; if $\alpha - |\bm{\beta}|$, then the state $\psi_{-}$. We can see this directly from the calculation of the expectation value of the operator $\alpha + \bm{\beta} \cdot \bm{\sigma}$ on the particular form of the state $\psi$ in Bell's quote above:\todo{Maybe we need to see what this calculation gives for all values of $X$.}
 \begin{displaymath}
   \begin{split}
-    \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi}
-    &= \langle \psi | \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} | \psi \rangle \\
+    \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi_{+}}
+    &= \langle \psi_{+} | \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} | \psi_{+} \rangle \\
     &=
     \begin{pmatrix}
       1 & 0
@@ -229,6 +284,36 @@ Given that perspective on the physical reality, then to decide which state the p
     &= \alpha + \beta_z.
   \end{split}
 \end{displaymath}
+By contrast, for a system in the state $\psi_{-}$ we would have
+\begin{displaymath}
+  \begin{split}
+    \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi_{-}}
+    &= \langle \psi_{-} | \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} | \psi_{-} \rangle \\
+    &=
+    \begin{pmatrix}
+      0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+      \alpha + \beta_z & \beta_x - i \beta_y \\
+      \beta_x + i \beta_y & \alpha - \beta_z
+    \end{pmatrix}.
+    \begin{pmatrix}
+      0 \\
+      1
+    \end{pmatrix}
+    \\
+    &=
+    \begin{pmatrix}
+      0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+      \beta_x - i \beta_y \\
+      \alpha - \beta_z
+    \end{pmatrix}
+    \\
+    &= \alpha - \beta_z.
+  \end{split}
+\end{displaymath}
 So in some sense this isn't really anything new, until we add the stipulation that we should be able to say which state the system is in \emph{before} we make a measurement, solely based on our knowledge of the value of the hidden variable $\lambda$.\footnote{Really what we achieve by this construction is that we avoid the necessity of imposing a magical mechanism of ``collapsing the wave function''. Such a collapse is necessitated by the view that the system can be \emph{in} a state which is a superposition of base states. The construction here says that, no, the system was in one of the base states all along, and was never in a superposition.} The preceding calculation assumes we know the state $\psi$ before we take the expectation value, whereas the calculation of $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\lambda}$ does not.\todo{Is this really right?}
 
 Eqn.~(\ref{eq:hiddenvariablestipulation}) then provides one particular instance for how one could arrange such a hidden variable $\lambda$. Given the value of $\lambda$, then we know from eqn.~(\ref{eq:hiddenvariablestipulation}) which eigenvalue we \emph{will} measure, and so we know what state the system is in \emph{before} we make any measurement. That's how a hidden variable should work. The interesting feature, and the focus of the discussion, is that this particular setup seems permissible within the framework of standard quantum mechanics.\todo[color=green!40]{An example todo note in another color.}
@@ -238,12 +323,15 @@ We might also take a moment to note some features of $\lambda$. It seems that Be
 \section{von Neumann}
 Let $|\psi\rangle=\sum_{i}a_i|q_i\rangle$, where $\hat{Q}|q_i\rangle = q_i |q_i\rangle$.
 \begin{center}
-\begin{tabular}{c|cc}
-\hline
- & Expectation & Observation: One of the eigenvaues of $\hat{Q}$ \\  \hline
-Quantum Mechanics & $(\psi, \hat{Q}\psi)/(\psi, \psi)$ & $q_i$ is observed with probability $|a_i|^2$.\\
-Hidden Variable & Average over $\lambda$ & $\lambda$ determines which $q_i$. \\ \hline
-\end{tabular}
+  \begin{tabular}{ccc}
+    \toprule
+    & \textbf{Expectation} & \textbf{Observation} \\
+    & Any number & An eigenvalue of $\hat{Q}$ \\
+    \midrule
+    Quantum Mechanics & $\dfrac{\langle \psi | \hat{Q}\psi \rangle}{\langle \psi | \psi \rangle}$ & $q_i$ with probability $|a_i|^2$\\
+    Hidden Variable & Average over $\lambda$ & $\lambda$ determines which $q_i$ \\
+    \bottomrule
+  \end{tabular}
 \end{center}
 von Neumann's argument compares the upper left and the lower right. The expectation value and the observed values should not be mixed up. The Quantum mechanical {\it expectation value} is linear in $\alpha$ and $\beta_i$, while the {\it observed value}, $\alpha\pm|\bm{\beta}|$ is not linear in them, but there is nothing wrong. What should be compared are the quantum mechanical expectation value and the averaged value over $\lambda$. The hidden variable theory is build up so that it results in the same results with quantum mechanics.
 
