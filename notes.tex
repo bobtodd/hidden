@@ -143,6 +143,37 @@ $\bm{\beta}$ is some 3--dimensional vector of coefficients.
   as desired.
 \end{proof}
 
+\begin{prop}[Eigenvectors]
+  The normalized eigenvectors of the operator $\alpha \mathbbm{1} + \bm{\beta} \cdot
+  \bm{\sigma}$ are
+  \begin{align*}
+    \phi_{+}
+    &:= \frac{1}{\sqrt{2|\bm{\beta}| (|\bm{\beta}|+\beta_z)}}
+    \begin{pmatrix}
+      |\bm{\beta}|+\beta_z \\
+      \beta_x+i\beta_y
+    \end{pmatrix},
+    &
+    \phi_{-}
+    &:= \frac{1}{\sqrt{2|\bm{\beta}|(|\bm{\beta}|-\beta_z)}}
+    \begin{pmatrix}
+      \beta_z - |\bm{\beta}|\\
+      \beta_x+i\beta_y
+    \end{pmatrix}.
+  \end{align*}
+\end{prop}
+
+\begin{proof}
+  We know the operator has eigenvalues $\lambda_{\pm} := \alpha \pm
+  |\bm{\beta}|$.  We seek to solve the equation
+  \begin{displaymath}
+    \left( \alpha \mathbbm{1} + \bm{\beta} \cdot
+  \bm{\sigma} \right) \phi_{\pm} = \lambda_{\pm} \phi_{\pm}
+  \end{displaymath}
+  for the vector $\phi_{\pm}$ associated with each eigenvalue...
+\end{proof}
+
+
 \bigskip
 
 The section following the above calculation in \cite{Bell1966} then goes on to introduce a ``hidden variable'' $\lambda$ (unrelated to the $\lambda$ used above). By design, this variable removes any indeterminacy as to which state the spinor $\psi$ is actually in. That is, without the use of the ancillary variable $\lambda$, all we can say is that when we measure the quantity corresponding to the operator $\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}$, the measurement must return an eigenvalue of the operator: either $\alpha + |\bm{\beta}|$ or $\alpha - |\bm{\beta}|$, but we don't know which of these will result before making the measurement. However, by incorporating the information of the hidden variable $\lambda$, by virtue of what we mean by the phrase ``hidden variable'', this information should be sufficient to tell us beforehand which of the two possible eigenvalues will result from the measurement. Equation (3) of \cite{Bell1966} is the \emph{specification} of just such a rule: the eigenvalue that results from any measurement will be determined by the value of $\lambda$ according to the rule
@@ -192,41 +223,10 @@ Now, given our specification in eqn.~(\ref{eq:hiddenvariablestipulation}), the e
 \end{displaymath}
 precisely because \cite{Bell1966} has chosen coordinates where $\psi$ lies along the $z$-axis, so that $X = \beta_z \not= 0$.
 
-It seems that the point here is that, without the hidden variable, the expectation value of the operator $\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}$ should be $\alpha$, since its eigenvalues are equally probable,\footnote{The (normalized) eigenstates of $\alpha \mathbbm{1} +\boldsymbol{\beta}\cdot\boldsymbol{\sigma}$ are
-\begin{align*}
-  \psi_{+}
-  &:= \frac{1}{\sqrt{2|\bm{\beta}|}}
-  \begin{pmatrix}
-    \sqrt{|\bm{\beta}|+\beta_z}\\
-    \dfrac{\beta_x+i\beta_y}{\sqrt{|\bm{\beta}|+\beta_z}}
-  \end{pmatrix},
-  &
-  \psi_{-}
-  &:= \frac{1}{\sqrt{2|\bm{\beta}|}}
-  \begin{pmatrix}
-    -\sqrt{|\bm{\beta}|-\beta_z}\\
-    \dfrac{\beta_x+i\beta_y}{\sqrt{|\bm{\beta}|-\beta_z}}
-  \end{pmatrix}.
-\end{align*}
-$\psi$ is expanded with these eigenstates as follows:
-\begin{align*}
-  \psi
-  :=
-  \begin{pmatrix}
-    1\\
-    0
-  \end{pmatrix}
-  = \sqrt{\frac{|\bm{\beta}|+\beta_z}{2|\bm{\beta}|}}\psi_{+} - \sqrt{\frac{|\bm{\beta}|-\beta_z}{2|\bm{\beta}|}}\psi_{-}.
-\end{align*}
-Therefore, the probability that we get $\alpha+|\bm{\beta}|$ is $\dfrac{|\bm{\beta}|+\beta_z}{2|\bm{\beta}|}$, while we get $\alpha-|\bm{\beta}|$ with probability $\dfrac{|\bm{\beta}|-\beta_z}{2|\bm{\beta}|}$.
-The expectation value is
-\begin{align*}
-  \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle
-  = \left( \alpha+|\bm{\beta}| \right) \dfrac{|\bm{\beta}|+\beta_z}{2|\bm{\beta}|} + \left( \alpha-|\bm{\beta}| \right) \dfrac{|\bm{\beta}|-\beta_z}{2|\bm{\beta}|}
-  = \alpha + \beta_z.
-\end{align*}
-} 
-and we have \todo{I think I'm assuming here that the system is in a mixed state of $\psi_{+}$ \& $\psi_{-}$, with $\rho_{\pm} = \frac{1}{2}$. See $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi_{\pm}}$.}
+It seems that the point here is that, without the hidden variable, the
+expectation value of the operator $\alpha \mathbbm{1} + \bm{\beta}
+\cdot \bm{\sigma}$ should be $\alpha$, since its eigenvalues are
+equally probable, and we have \todo{I think I'm assuming here that the system is in a mixed state of $\psi_{+}$ \& $\psi_{-}$, with $\rho_{\pm} = \frac{1}{2}$. See $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi_{\pm}}$.}
 \begin{displaymath}
   \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle
   = \frac{1}{2} \left( \alpha + |\bm{\beta}| \right) + \frac{1}{2} \left( \alpha - |\bm{\beta}| \right)
@@ -254,66 +254,108 @@ Let us try to unpack a little more the statements made leading up to equation (3
 \end{quotation}
 and there follows the expression given above in eqn.~(\ref{eq:hiddenvariablestipulation}). It seems that part of what's being left unsaid is that, from the standpoint of an adherent of a hidden variable theory, the physical system is always \emph{in one particular state} or the other. The notion of being in a superposition of states, e.g.\ $\phi = a_{+} \psi_{+} + a_{-} \psi_{-}$, is a mathematical construct but not supposed to be a reflection of the underlying reality.
 
-Given that perspective on the physical reality, then to decide which state the physical system is \emph{really} in, we need simply to know what eigenvalue the measurement will return. If the measurement returns $\alpha + |\bm{\beta}|$, then the system is in the state $\psi_{+}$; if $\alpha - |\bm{\beta}|$, then the state $\psi_{-}$. We can see this directly from the calculation of the expectation value of the operator $\alpha + \bm{\beta} \cdot \bm{\sigma}$ on the particular form of the state $\psi$ in Bell's quote above:\todo{Maybe we need to see what this calculation gives for all values of $X$.}
-\begin{displaymath}
-  \begin{split}
-    \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi_{+}}
-    &= \langle \psi_{+} | \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} | \psi_{+} \rangle \\
-    &=
-    \begin{pmatrix}
-      1 & 0
-    \end{pmatrix}
-    \begin{pmatrix}
-      \alpha + \beta_z & \beta_x - i \beta_y \\
-      \beta_x + i \beta_y & \alpha - \beta_z
-    \end{pmatrix}.
-    \begin{pmatrix}
-      1 \\
-      0
-    \end{pmatrix}
-    \\
-    &=
-    \begin{pmatrix}
-      1 & 0
-    \end{pmatrix}
-    \begin{pmatrix}
-      \alpha + \beta_z \\
-      \beta_x + i\beta_y
-    \end{pmatrix}
-    \\
-    &= \alpha + \beta_z.
-  \end{split}
-\end{displaymath}
-By contrast, for a system in the state $\psi_{-}$ we would have
-\begin{displaymath}
-  \begin{split}
-    \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi_{-}}
-    &= \langle \psi_{-} | \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} | \psi_{-} \rangle \\
-    &=
-    \begin{pmatrix}
-      0 & 1
-    \end{pmatrix}
-    \begin{pmatrix}
-      \alpha + \beta_z & \beta_x - i \beta_y \\
-      \beta_x + i \beta_y & \alpha - \beta_z
-    \end{pmatrix}.
-    \begin{pmatrix}
-      0 \\
-      1
-    \end{pmatrix}
-    \\
-    &=
-    \begin{pmatrix}
-      0 & 1
-    \end{pmatrix}
-    \begin{pmatrix}
-      \beta_x - i \beta_y \\
-      \alpha - \beta_z
-    \end{pmatrix}
-    \\
-    &= \alpha - \beta_z.
-  \end{split}
-\end{displaymath}
+Given that perspective on the physical reality, then to decide which
+state the physical system is \emph{really} in, we need simply to know
+what eigenvalue the measurement will return. If the measurement
+returns $\alpha + |\bm{\beta}|$, then the system is in the state
+$\psi_{+}$; if $\alpha - |\bm{\beta}|$, then the state $\psi_{-}$. We
+can see this directly from the calculation of the expectation value of
+the operator $\alpha + \bm{\beta} \cdot \bm{\sigma}$ on the particular
+form of the state $\psi$ in Bell's quote above:\todo{Maybe we need to
+  see what this calculation gives for all values of $X$.}
+
+\begin{prop}
+  The expectation values of the operator $\alpha \mathbbm{1} +
+  \bm{\beta} \cdot \bm{\sigma}$ in the states $\psi_{+}
+  := \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ and $\psi_{-}
+  := \begin{pmatrix} 0 \\ 1 \end{pmatrix}$ are $\alpha + \beta_z$ and
+  $\alpha - \beta_z$, respectively.
+\end{prop}
+
+\begin{proof}
+  In the state $\psi_{+}$, the expectation value yields
+  \begin{displaymath}
+    \begin{split}
+      \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi_{+}}
+      &= \langle \psi_{+} | \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} | \psi_{+} \rangle \\
+      &=
+      \begin{pmatrix}
+        1 & 0
+      \end{pmatrix}
+      \begin{pmatrix}
+        \alpha + \beta_z & \beta_x - i \beta_y \\
+        \beta_x + i \beta_y & \alpha - \beta_z
+      \end{pmatrix}
+      \begin{pmatrix}
+        1 \\
+        0
+      \end{pmatrix}
+      \\
+      &=
+      \begin{pmatrix}
+        1 & 0
+      \end{pmatrix}
+      \begin{pmatrix}
+        \alpha + \beta_z \\
+        \beta_x + i\beta_y
+      \end{pmatrix}
+      \\
+      &= \alpha + \beta_z.
+    \end{split}
+  \end{displaymath}
+  By contrast, for a system in the state $\psi_{-}$ we would have
+  \begin{displaymath}
+    \begin{split}
+      \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi_{-}}
+      &= \langle \psi_{-} | \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} | \psi_{-} \rangle \\
+      &=
+      \begin{pmatrix}
+        0 & 1
+      \end{pmatrix}
+      \begin{pmatrix}
+        \alpha + \beta_z & \beta_x - i \beta_y \\
+        \beta_x + i \beta_y & \alpha - \beta_z
+      \end{pmatrix}
+      \begin{pmatrix}
+        0 \\
+        1
+      \end{pmatrix}
+      \\
+      &=
+      \begin{pmatrix}
+        0 & 1
+      \end{pmatrix}
+      \begin{pmatrix}
+        \beta_x - i \beta_y \\
+        \alpha - \beta_z
+      \end{pmatrix}
+      \\
+      &= \alpha - \beta_z.
+    \end{split}
+  \end{displaymath}
+\end{proof}
+
+We may view the same calculation from the perspective of the
+eigenvectors of the operator $\alpha \mathbbm{1}
++\bm{\beta}\cdot\bm{\sigma}$.  In terms of the eigenstates of the operator
+$\psi$ may be expanded as follows:
+\begin{align*}
+  \psi
+  :=
+  \begin{pmatrix}
+    1\\
+    0
+  \end{pmatrix}
+  = \sqrt{\frac{|\bm{\beta}|+\beta_z}{2|\bm{\beta}|}}\phi_{+} - \sqrt{\frac{|\bm{\beta}|-\beta_z}{2|\bm{\beta}|}}\phi_{-}.
+\end{align*}
+Therefore, the probability that we get $\alpha+|\bm{\beta}|$ is $\dfrac{|\bm{\beta}|+\beta_z}{2|\bm{\beta}|}$, while we get $\alpha-|\bm{\beta}|$ with probability $\dfrac{|\bm{\beta}|-\beta_z}{2|\bm{\beta}|}$.
+Thus the expectation value is
+\begin{align*}
+  \langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\psi}
+  = \left( \alpha+|\bm{\beta}| \right) \dfrac{|\bm{\beta}|+\beta_z}{2|\bm{\beta}|} + \left( \alpha-|\bm{\beta}| \right) \dfrac{|\bm{\beta}|-\beta_z}{2|\bm{\beta}|}
+  = \alpha + \beta_z.
+\end{align*}
+
 So in some sense this isn't really anything new, until we add the stipulation that we should be able to say which state the system is in \emph{before} we make a measurement, solely based on our knowledge of the value of the hidden variable $\lambda$.\footnote{Really what we achieve by this construction is that we avoid the necessity of imposing a magical mechanism of ``collapsing the wave function''. Such a collapse is necessitated by the view that the system can be \emph{in} a state which is a superposition of base states. The construction here says that, no, the system was in one of the base states all along, and was never in a superposition.} The preceding calculation assumes we know the state $\psi$ before we take the expectation value, whereas the calculation of $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\lambda}$ does not.\todo{Is this really right?}
 
 Eqn.~(\ref{eq:hiddenvariablestipulation}) then provides one particular instance for how one could arrange such a hidden variable $\lambda$. Given the value of $\lambda$, then we know from eqn.~(\ref{eq:hiddenvariablestipulation}) which eigenvalue we \emph{will} measure, and so we know what state the system is in \emph{before} we make any measurement. That's how a hidden variable should work. The interesting feature, and the focus of the discussion, is that this particular setup seems permissible within the framework of standard quantum mechanics.\todo[color=green!40]{An example todo note in another color.}
@@ -333,7 +375,14 @@ Let $|\psi\rangle=\sum_{i}a_i|q_i\rangle$, where $\hat{Q}|q_i\rangle = q_i |q_i\
     \bottomrule
   \end{tabular}
 \end{center}
-von Neumann's argument compares the upper left and the lower right. The expectation value and the observed values should not be mixed up. The Quantum mechanical {\it expectation value} is linear in $\alpha$ and $\beta_i$, while the {\it observed value}, $\alpha\pm|\bm{\beta}|$ is not linear in them, but there is nothing wrong. What should be compared are the quantum mechanical expectation value and the averaged value over $\lambda$. The hidden variable theory is build up so that it results in the same results with quantum mechanics.
+von Neumann's argument compares the upper left and the lower
+right. The expectation value and the observed values should not be
+mixed up. The Quantum mechanical {\it expectation value} is linear in
+$\alpha$ and $\beta_i$, while the {\it observed value},
+$\alpha\pm|\bm{\beta}|$ is not linear in them, but there is nothing
+wrong. What should be compared are the quantum mechanical expectation
+value and the averaged value over $\lambda$. The hidden variable
+theory is built up so that gives the same results as standard quantum mechanics.
 
 
 
