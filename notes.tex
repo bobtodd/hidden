@@ -386,19 +386,23 @@ theory is built up so that gives the same results as standard quantum mechanics.
 
 
 \section{Jauch and Piron}
-A projection operator $P$ is an operator on a vector space such that $P^2 = P$. The zero and the unit operator obviously satisfy this condition. 
+A projection operator $P$ is an operator on a vector space such that
+$P^2 = P$. The zero and the unit operator obviously satisfy this
+condition.\todo{Is $\bm{\alpha}$ any vector?}
 \begin{displaymath}
-\hat{A}:= \tfrac{1}{2}+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma},
+  \hat{A}:= \tfrac{1}{2}+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma},
 \end{displaymath}
 also satisfies that condition, as follows:
 \begin{align*}
-\hat{A}^2&:= \left(\tfrac{1}{2}+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}\right)\left(\tfrac{1}{2}+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}\right)\\
-&=\tfrac{1}{4}+\tfrac{1}{4}\hat{\alpha}_i\hat{\alpha}_j\sigma_i\sigma_j+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}\\
-&=\tfrac{1}{4}+\tfrac{1}{8}\hat{\alpha}_i\hat{\alpha}_j(\sigma_i\sigma_j+\sigma_j\sigma_i)+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}\\
-&=\tfrac{1}{4}+\tfrac{1}{8}\hat{\alpha}_i\hat{\alpha}_j2\delta_{ij}+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}\\
-&=\tfrac{1}{4}(1+|\hat{\bm{\alpha}}|^2)+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}=\hat{A}
+  \hat{A}^2&:= \left(\tfrac{1}{2}+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}\right)\left(\tfrac{1}{2}+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}\right)\\
+  &=\tfrac{1}{4}+\tfrac{1}{4}\hat{\alpha}_i\hat{\alpha}_j\sigma_i\sigma_j+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}\\
+  &=\tfrac{1}{4}+\tfrac{1}{8}\hat{\alpha}_i\hat{\alpha}_j(\sigma_i\sigma_j+\sigma_j\sigma_i)+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}\\
+  &=\tfrac{1}{4}+\tfrac{1}{8}\hat{\alpha}_i\hat{\alpha}_j2\delta_{ij}+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}\\
+  &=\tfrac{1}{4}(1+|\hat{\bm{\alpha}}|^2)+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}=\hat{A}
 \end{align*}
-The eigenvalues of $\hat{A}$ are $\tfrac{1}{2}\pm |\bm{\alpha}|$, which are 0 and 1, as calculated before.
+The eigenvalues of $\hat{A}$ are $\tfrac{1}{2}\pm |\bm{\alpha}|$,
+which are 0 and 1, as calculated before.\todo{Does the hat mean
+  $\bm{\alpha}$ is a unit vector?  Confusing...}
 
 %Since $\tfrac{1}{2}+\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}$ and $\tfrac{1}{2}-\tfrac{1}{2}\hat{\bm{\alpha}}\cdot\bm{\sigma}$ commute, using (A),
 %\begin{align*}
