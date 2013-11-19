@@ -145,7 +145,7 @@ $\bm{\beta}$ is some 3--dimensional vector of coefficients.
 
 \begin{prop}[Eigenvectors]
   The normalized eigenvectors of the operator $\alpha \mathbbm{1} + \bm{\beta} \cdot
-  \bm{\sigma}$ are
+  \bm{\sigma}$ are \todo{Double check components... see calculation}
   \begin{align*}
     \phi_{+}
     &:= \frac{1}{\sqrt{2|\bm{\beta}| (|\bm{\beta}|+\beta_z)}}
@@ -168,9 +168,79 @@ $\bm{\beta}$ is some 3--dimensional vector of coefficients.
   |\bm{\beta}|$.  We seek to solve the equation
   \begin{displaymath}
     \left( \alpha \mathbbm{1} + \bm{\beta} \cdot
-  \bm{\sigma} \right) \phi_{\pm} = \lambda_{\pm} \phi_{\pm}
+  \bm{\sigma} \right) \phi_{\pm} = \lambda_{\pm} \phi_{\pm},
   \end{displaymath}
-  for the vector $\phi_{\pm}$ associated with each eigenvalue...
+  or equivalently
+  \begin{displaymath}
+    \left[ \left( \alpha - \lambda_{\pm} \right) \mathbbm{1} + \bm{\beta} \cdot
+  \bm{\sigma} \right] \phi_{\pm} = 0,
+  \end{displaymath}
+  for the vector $\phi_{\pm}$ associated with each eigenvalue.  In components this gives
+  \begin{displaymath}
+    \begin{pmatrix}
+      \alpha + \beta_z - \lambda_{\pm} & \beta_x - i \beta_y \\
+      \beta_x + i \beta_y & \alpha - \beta_z - \lambda_{\pm}
+    \end{pmatrix}
+    \begin{pmatrix}
+      a_{\pm} \\
+      b_{\pm}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      0 \\
+      0
+    \end{pmatrix},
+  \end{displaymath}
+  which leads to the following pair of linear equations:
+  \begin{alignat*}{3}
+    (\alpha + \beta_z - \lambda_{\pm})&a_{\pm} + (\beta_x - i \beta_y)&b_{\pm} &= 0, \\
+    (\beta_x + i \beta_y)&a_{\pm} + (\alpha - \beta_z - \lambda_{\pm})&b_{\pm} &= 0
+  \end{alignat*}
+  for the components $a_{\pm}, b_{\pm}$ of the spinors $\phi_{\pm}$.  The first equation yields the relation
+  \begin{displaymath}
+    a_{\pm} = - \frac{\beta_x - i \beta_y}{\alpha + \beta_z - \lambda_{\pm}} b_{\pm}.
+  \end{displaymath}
+  Substituting this relation, the second equation becomes
+  \begin{displaymath}
+    \begin{split}
+      0
+      &= \left[ (\alpha - \beta_z - \lambda_{\pm}) - \frac{(\beta_x + i \beta_y)(\beta_x - i \beta_y)}{\alpha + \beta_z - \lambda_{\pm}} \right] b_{\pm} \\
+      &= \left[ -(\beta_z \pm |\bm{\beta}|) - \frac{\beta_x^2 + \beta_y^2}{\beta_z \mp |\bm{\beta}|} \right] b_{\pm} \\
+      &= - \left[ \frac{(\beta_z \pm |\bm{\beta}|)(\beta_z \mp |\bm{\beta}|) + \beta_x^2 + \beta_y^2}{\beta_z \mp |\bm{\beta}|} \right] b_{\pm} \\
+      &= - \left[ \frac{\beta_z^2 - |\bm{\beta}|^2 + \beta_x^2 + \beta_y^2}{\beta_z \mp |\bm{\beta}|} \right] b_{\pm}.
+    \end{split}
+  \end{displaymath}
+  The term in square brackets is identically zero, leaving $b_{\pm}$ as free parameters.  Given the relation between $b_{\pm}$ and $a_{\pm}$, we may choose $b_{\pm} := \beta_z \pm |\bm{\beta}|$ for convenience, yielding
+  \begin{displaymath}
+    a_{\pm} = - \frac{\beta_x - i \beta_y}{\beta_z \mp |\bm{\beta}|} (\beta_z \pm |\bm{\beta}|)
+    = \beta_x - i \beta_y.
+  \end{displaymath}
+  We can therefore say that the vectors
+  \begin{displaymath}
+    \begin{pmatrix}
+      \beta_x - i \beta_y \\
+      \beta_z \pm |\bm{\beta}|
+    \end{pmatrix}
+  \end{displaymath}
+  span the eigenspaces of the operator.  These vectors have squared norm\footnote{Recall that we are taking the norm of a complex vector, so each component is multiplied by its corresponding complex conjugate.}
+  \begin{displaymath}
+    \begin{split}
+      |\beta_x - i \beta_y|^2 + |\beta_z \pm |\bm{\beta}||^2
+      &= \beta_x^2 + \beta_y^2 + \beta_z^2 \pm 2|\bm{\beta}| \beta_z + |\bm{\beta}|^2 \\
+      &= 2 |\bm{\beta}|^2 \pm 2 |\bm{\beta}| \beta_z \\
+      &= 2 |\bm{\beta}| \left( |\bm{\beta}| \pm \beta_z \right).
+    \end{split}
+  \end{displaymath}
+  Thus the normalized eigenvectors become
+  \begin{displaymath}
+    \phi_{\pm}
+    := \frac{1}{\sqrt{2|\bm{\beta}| (|\bm{\beta}| \pm \beta_z)}}
+    \begin{pmatrix}
+      \beta_x - i \beta_y \\
+      \beta_z \pm |\bm{\beta}|
+    \end{pmatrix},
+  \end{displaymath}
+  as stated.
 \end{proof}
 
 
