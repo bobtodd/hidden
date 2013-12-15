@@ -4,6 +4,7 @@
 \usepackage{bm} % bold-math, for getting boldface Greek letters
 \usepackage{bbm} % to get blackboard-bold fonts, including double-stroke 1
 \usepackage{booktabs} % for nice tables
+\usepackage{enumitem} % for modifying list formats
 
 \usepackage[colorinlistoftodos]{todonotes}
 
@@ -470,91 +471,124 @@ For example, let $|\psi\rangle=\sum_{i}a_i|q_i\rangle$ and $Q|q_i\rangle = q_i |
 
 \subsection{The Argument of Jauch \& Piron}
 
+\subsubsection{Basics of Projection Operators}
+
 A projection operator $P$ is an operator on a vector space such that
 $P^2 = P$. The zero and the unit operator obviously satisfy this
-condition.\todo{Is $\bm{\alpha}$ any vector?}
+condition.  Any operator of the form
 \begin{displaymath}
-  \hat{A}:= \tfrac{1}{2}+\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma},
+  A:= \tfrac{1}{2} + \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma},
 \end{displaymath}
-also satisfies that condition, as follows:
+where $\hat{\bm{\alpha}}$ is a unit vector, also satisfies that condition, as follows:
 \begin{align*}
-  \hat{A}^2&:= \left(\tfrac{1}{2}+\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}\right)\left(\tfrac{1}{2}+\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}\right)\\
-  &=\tfrac{1}{4}+\tfrac{1}{4}\alpha_i\alpha_j\sigma_i\sigma_j+\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}\\
-  &=\tfrac{1}{4}+\tfrac{1}{8}\alpha_i\alpha_j(\sigma_i\sigma_j+\sigma_j\sigma_i)+\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}\\
-  &=\tfrac{1}{4}+\tfrac{1}{8}\alpha_i\alpha_j2\delta_{ij}+\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}\\
-  &=\tfrac{1}{4}(1+|\bm{\alpha}|^2)+\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}=\hat{A}
+  A^2
+  &:= \left( \tfrac{1}{2} + \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \right)
+  \left( \tfrac{1}{2} + \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \right) \\
+  &= \tfrac{1}{4} + \tfrac{1}{4} \hat{\alpha}_i \hat{\alpha}_j \sigma_i \sigma_j + \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \\
+  &= \tfrac{1}{4} + \tfrac{1}{8} \hat{\alpha}_i \hat{\alpha}_j ( \sigma_i \sigma_j + \sigma_j \sigma_i ) + \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \\
+  &= \tfrac{1}{4} + \tfrac{1}{8} \hat{\alpha}_i \hat{\alpha}_j 2 \delta_{ij} + \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \\
+  &= \tfrac{1}{4} ( 1 + |\hat{\bm{\alpha}}|^2 ) + \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \\
+  &= A.
 \end{align*}
 %The eigenvalues of $\hat{A}$ are $\tfrac{1}{2}\pm |\bm{\alpha}|$,
 %which are 0 and 1, as calculated before.\todo{Does the hat mean
 %  $\bm{\alpha}$ is a unit vector? Confusing...}
+If we let
+\begin{displaymath}
+  A_{\pm} := \tfrac{1}{2} \pm \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma},
+\end{displaymath}
+then
+\begin{displaymath}
+  \begin{split}
+    A_{+} A_{-}
+    &= \left( \tfrac{1}{2} + \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \right)
+    \left( \tfrac{1}{2} - \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \right) \\
+    &= \tfrac{1}{4} - \tfrac{1}{4} \hat{\bm{\alpha}} \cdot \bm{\sigma} + \tfrac{1}{4} \hat{\bm{\alpha}} \cdot \bm{\sigma} + \tfrac{1}{4} (\hat{\bm{\alpha}} \cdot \bm{\sigma})^2 \\
+    &= \tfrac{1}{4} + \tfrac{1}{4} \hat{\bm{\alpha}} \cdot \bm{\sigma} - \tfrac{1}{4} \hat{\bm{\alpha}} \cdot \bm{\sigma} + \tfrac{1}{4} (\hat{\bm{\alpha}} \cdot \bm{\sigma})^2 \\
+    &= \left( \tfrac{1}{2} - \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \right)
+    \left( \tfrac{1}{2} + \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \right) \\
+    &= A_{-} A_{+}.
+  \end{split}
+\end{displaymath}
+Thus the two projection operators commute.
 
-The projection operator $\tfrac{1}{2}\mathbbm{1}+\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}$ is a particular case of $\alpha\mathbbm{1}+\bm{\beta}\cdot\bm{\sigma}$. In fact when $\alpha=\tfrac{1}{2}$ and $\bm{\beta}=\tfrac{1}{2}\bm{\alpha}$, the eigenvalues are $\tfrac{1}{2}\pm\tfrac{1}{2}|\bm{\alpha}|=0,1$, as required for a projection operator
-\footnote{
-The eigenvalues of a projection operator are 0 and 1.
+The projection operator $\tfrac{1}{2} \mathbbm{1} + \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma}$ is a particular case of $\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}$. In fact when $\alpha = \tfrac{1}{2}$ and $\bm{\beta} = \tfrac{1}{2}\hat{\bm{\alpha}}$, the eigenvalues are $\tfrac{1}{2} \pm \tfrac{1}{2} |\hat{\bm{\alpha}}| = 0,1$, as required for a projection operator.\footnote{The eigenvalues of a projection operator are 0 and 1.  If $\bm{x}$ is an eigenvector of $P$ and $\lambda$ is its corresponding eigenvalue,
+\begin{align*}
+  P^2 \bm{x} = P \bm{x} \Leftrightarrow (\lambda^2 - \lambda) \bm{x} = 0.
+\end{align*}
+Therefore $\lambda = 0,1$.}
+%The eigenvector with the eigenvalue 1 is
+%\begin{align*}
+%    \phi_{+}
+%    &:= \frac{1}{\sqrt{2 (1+\alpha_z)}}
+%    \begin{pmatrix}
+%      1 +\alpha_z \\
+%      \alpha_x+i\alpha_y
+%    \end{pmatrix}.
+%\end{align*}
+The eigenvectors corresponding to $\lambda_{\pm} = 0,1$ then become
+\begin{displaymath}
+  \phi_{\pm}
+  := \frac{1}{\sqrt{2 (1 \pm \hat{\alpha}_z)}}
+  \begin{pmatrix}
+    \hat{\alpha}_x - i \hat{\alpha}_y \\
+    \hat{\alpha}_z \pm 1
+  \end{pmatrix}.
+\end{displaymath}
 
-If $\bm{x}$ is an eigenvector of $P$ and $\lambda$ is its corresponding eigenvalue,
-\begin{align*}
-P^2\bm{x} = P\bm{x} \Leftrightarrow (\lambda^2-\lambda)\bm{x}=0.
-\end{align*}
-Therefore, $\lambda=0,1$.
-}.  
 
-The eigenvector with the eigenvalue 1 is
-\begin{align*}
-    \phi_{+}
-    &:= \frac{1}{\sqrt{2 (1+\alpha_z)}}
-    \begin{pmatrix}
-      1 +\alpha_z \\
-      \alpha_x+i\alpha_y
-    \end{pmatrix}.
-\end{align*}
+\subsubsection{Assumptions on Projection Operators}
 
-For the projection operators, Jauch and Piron put the following assumptions:\\
-(A) Expectation values of commuting projection operators are additive. \\
-(B) If, for some state and two projections $a$ and $b$,
+For the projection operators, Jauch \& Piron make the following assumptions:
+\begin{enumerate}[label=(\Alph*)]
+  \item\label{list:jpA} Expectation values of commuting projection operators are additive.
+  \item\label{list:jpB} If, for some state and two projections $a$ and $b$,
+  \begin{align*}
+    \langle a \rangle = \langle b \rangle = 1,
+  \end{align*}
+  then for that state 
+  \begin{align*}
+    \langle a \cap b \rangle = 1.
+  \end{align*}
+\end{enumerate}
+In a dispersion-free state, the expectation value of an operator must be one of its eigenvalues, 0 or 1 for projections. Since $\tfrac{1}{2}\pm\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}$ commute, by \ref{list:jpA}
 \begin{align*}
-\langle a \rangle = \langle b \rangle = 1,
+  \langle \tfrac{1}{2} + \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \rangle +
+  \langle \tfrac{1}{2} - \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \rangle
+  = \langle \tfrac{1}{2} + \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} + \tfrac{1}{2} - \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \rangle
+  = 1,
 \end{align*}
-then for that state 
+we have that for the dispersion-free state either
 \begin{align*}
-\langle a \cap b \rangle = 1.
+  \langle \tfrac{1}{2} + \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \rangle = 1
+  \qquad \text{or} \qquad
+  \langle \tfrac{1}{2} - \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma} \rangle = 1.
 \end{align*}
-In a dispersion-free state, the expectation value of an operator must be one of its eigenvalues, 0 or 1 for projections. Since $\tfrac{1}{2}\pm\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}$ commute, by (A)
-
+Let $\hat{\bm{\alpha}}$ and $\hat{\bm{\beta}}$ be any noncollinear unit vectors and
+\begin{displaymath}
+  a = \tfrac{1}{2} \pm \tfrac{1}{2} \hat{\bm{\alpha}} \cdot \bm{\sigma}
+  \qquad \text{and} \qquad
+  b = \tfrac{1}{2} \pm \tfrac{1}{2} \hat{\bm{\beta}} \cdot \bm{\sigma},
+\end{displaymath}
+with the signs chosen so that $\langle a \rangle = \langle b \rangle = 1$. Then \ref{list:jpB} requires $\langle a \cap b \rangle = 1$.  But with $\hat{\bm{\alpha}}$ and $\hat{\bm{\beta}}$ noncollinear, the subspace spanned by 
 \begin{align*}
-\langle\tfrac{1}{2}+\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}\rangle+
-\langle\tfrac{1}{2}-\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}\rangle
-=\langle\tfrac{1}{2}+\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}+\tfrac{1}{2}-\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}\rangle =1.
-\end{align*}
-We have that for the dispersion-free state either
-\begin{align*}
-\langle\tfrac{1}{2}+\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}\rangle = 1 \qquad {\rm or} \qquad \langle\tfrac{1}{2}-\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}\rangle=1,
-\end{align*}
-for a dispersion-free state. Let $\bm{\alpha}$ and $\bm{\beta}$ be any noncollinear unit vectors and
-\begin{align*}
-a= \tfrac{1}{2}\pm\tfrac{1}{2}\bm{\alpha}\cdot\bm{\sigma}, \qquad b= \tfrac{1}{2}\pm\tfrac{1}{2}\bm{\beta}\cdot\bm{\sigma}
-\end{align*}
-with the signs chosen so that $\langle a \rangle = \langle b \rangle = 1$. Then (B) requires $\langle a \cap b \rangle = 1.$
-
-But with $\bm{\alpha}$ and $\bm{\beta}$ noncollinear, the subspace spanned by 
-\begin{align*}
-    \phi_{+,\bm{\alpha}}
-    &:= \frac{1}{\sqrt{2 (1+\alpha_z)}}
-    \begin{pmatrix}
-      1 +\alpha_z \\
-      \alpha_x+i\alpha_y
-    \end{pmatrix},
+    \phi_{+,\hat{\bm{\alpha}}}
+    &:= \frac{1}{\sqrt{2 (1 + \hat{\alpha}_z)}}
+  \begin{pmatrix}
+    \hat{\alpha}_x - i \hat{\alpha}_y \\
+    \hat{\alpha}_z + 1
+  \end{pmatrix},
 \end{align*}
 and that spanned by 
 \begin{align*}
-    \phi_{+,\bm{\beta}}
-    &:= \frac{1}{\sqrt{2 (1+\beta_z)}}
-    \begin{pmatrix}
-      1 +\beta_z \\
-      \beta_x+i\beta_y
-    \end{pmatrix},
+    \phi_{+,\hat{\bm{\beta}}}
+    &:= \frac{1}{\sqrt{2 (1 + \hat{\beta}_z)}}
+  \begin{pmatrix}
+    \hat{\beta}_x - i \hat{\beta}_y \\
+    \hat{\beta}_z + 1
+  \end{pmatrix},
 \end{align*}
-have the intersection $0$, which means $a \cap b = 0$, so that $\langle a \cap b \rangle = 0$. This contradiction led Jauch and Piron to conclude that the dispersion-free state is impossible. But again, the contradiction comes from the tacit assumption that (B) holds for the expectation values of dispersion-free states. (B) does not have to be satisfied for dispesion-free states. We only require (B) is reproduced after averaging over hidden variables.
+have the intersection $0$, which means $a \cap b = 0$, so that $\langle a \cap b \rangle = 0$. This contradiction led Jauch and Piron to conclude that the dispersion-free state is impossible. But again, the contradiction comes from the tacit assumption that \ref{list:jpB} holds for the expectation values of dispersion-free states. \ref{list:jpB} does not have to be satisfied for dispesion-free states. We only require \ref{list:jpB} is reproduced after averaging over hidden variables.
 
 \bibliographystyle{plain}
 \bibliography{notes}
