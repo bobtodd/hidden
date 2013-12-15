@@ -75,7 +75,7 @@ Then the expectation value of $\hat{A}$ in this collection of mixed states becom
   = \sum_k \rho_k \langle \hat{A} \rangle_{\psi_k}.
 \end{displaymath}
 
-\section{Assumption, and a simple example}
+\section{An Example of Dispersion--Free States}
 
 In \cite[p.448]{Bell1966} we find the discussion of a spin-$\frac{1}{2}$ system. In particular we look at the action of the operator
 \begin{displaymath}
@@ -432,30 +432,44 @@ Eqn.~(\ref{eq:hiddenvariablestipulation}) then provides one particular instance 
 
 We might also take a moment to note some features of $\lambda$. It seems that Bell falls into the typical practice of physicists which assumes that any random variable is uniformly distributed unless otherwise stated.\footnote{Really there are only two distributions that ever come up in standard presentations of physics: the uniform and the gaussian. Since Bell makes no mention of the gaussian, we fall back to the uniform distribution.} This agrees with the calculation that follows, since the integral expression presented in the calculation for $\langle \alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma} \rangle_{\lambda}$ shows no particular probability density other than the implied constant density.
 
-\section{von Neumann}
-Let $|\psi\rangle=\sum_{i}a_i|q_i\rangle$, where $\hat{Q}|q_i\rangle = q_i |q_i\rangle$.
-\begin{center}
-  \begin{tabular}{ccc}
-    \toprule
-    & \textbf{Expectation} & \textbf{Observation} \\
-    & Any number & An eigenvalue of $\hat{Q}$ \\
-    \midrule
-    Quantum Mechanics & $\dfrac{\langle \psi | \hat{Q}\psi \rangle}{\langle \psi | \psi \rangle}$ & $q_i$ with probability $|a_i|^2$\\
-    Hidden Variable & Average over $\lambda$ & $\lambda$ determines which $q_i$ \\
-    \bottomrule
-  \end{tabular}
-\end{center}
-von Neumann's argument compares the upper left and the lower
-right. The expectation value and the observed values should not be
-mixed up. The Quantum mechanical {\it expectation value} is linear in
-$\alpha$ and $\beta_i$, while the {\it observed value},
-$\alpha\pm|\bm{\beta}|$ is not linear in them, but there is nothing
-wrong. What should be compared are the quantum mechanical expectation
-value and the averaged value over $\lambda$. The hidden variable
-theory is built up so that gives the same results as standard quantum mechanics.
+\section{Refutations of Previous Arguments}
+
+\subsection{von Neumann's Argument}
+
+In \cite[pp.448--449]{Bell1966}, Bell highlights the principal assumption of von Neumann's argument against dispersion--free states:
+\begin{quote}
+  Any real linear combination of any two Hermitian operators represents an observable, and the same linear combination of expectation values is the expectation value of the combination.
+\end{quote}
+\emph{Given} this assumption, it is easy to see that dispersion--free states are forbidden.  Since we can always restrict consideration to a two--dimensional subspace, then it suffices to consider a spin--1/2 system.  The construction from the earlier section, then, provides a counterexample.  The expectation value of the operator $\alpha \mathbbm{1} + \bm{\beta} \cdot \bm{\sigma}$ is $\alpha + |\bm{\beta}|$, which is nonlinear in $\bm{\beta}$.  But the eigenvalues of the operator are $\alpha \pm \beta_z$, which are in fact linear in $\bm{\beta}$.  Since dispersion--free states satisfy the requirement that their expectation value always equal one of the eigenvalues, then the above system cannot be allowed within the framework of quantum mechanics according to von Neumann's assumption.
+
+Bell's essential refutation of this argument stems less from the mathematics and rather from the physics under investigation.  The assumption, given two operators corresponding to two measurable quantities, that their linear combination also corresponds to a measurable quantity is a mathematical convenience.  Moreover, it yields the right results in the \emph{linear theory} embodied in the Hilbert space structure.  But it is a transition that is in fact \emph{never realized experimentally}: if we have operators $Q_1$ and $Q_2$, in general the measurement of $Q_1 + Q_2$ requires an experimental setup distinct from that needed to measure either $Q_1$ or $Q_2$ separately.  The canonical example is where $Q_1 = \sigma_x$ and $Q_2 = \sigma_y$, where measurement of $\sigma_x, \sigma_y$, and $\sigma_x + \sigma_y$ require \emph{three}, not two, different orientations of appropriate Stern--Gerlach devices.  Bell states
+\begin{quote}
+  But this explanation of the nonadditivity of allowed values also establishes the nontriviality of the additivity of expectation values. The latter is a quite peculiar property of quantum mechanical states, not to be expected \emph{a priori}. There is no reason to demand it individually of the hypothetical dispersion free states, whose function it is to reproduce the \emph{measurable} peculiarities of quantum mechanics \emph{when averaged over}.\footnote{Emphasis in the original.}
+\end{quote}
+
+It seems that, in some sense, a hidden variable theory is to be viewed as a fully nonlinear theory, akin to that of classical mechanics.  It should not be expected to behave in the same way as the linear quantum theory, except when the hidden variable theory is considered in a statistical manner, and then compared with the fundamentally statistical quantum theory.
+
+\begin{table}
+  \label{tab:vonneumann}
+  \caption{A comparison of the predictive statements of quantum mechanics and hidden variable theories.}
+  \begin{center}
+    \begin{tabular}{ccc}
+      \toprule
+      & \textbf{Expectation} & \textbf{Observation} \\
+      & Any number & An eigenvalue of $Q$ \\
+      \midrule
+      Quantum Mechanics & $\dfrac{\langle \psi | Q | \psi \rangle}{\langle \psi | \psi \rangle}$ & $q_i$ with probability $|a_i|^2$\\
+      Hidden Variable & Average over $\lambda$ & $\lambda$ determines which $q_i$ \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\end{table}
+
+For example, let $|\psi\rangle=\sum_{i}a_i|q_i\rangle$ and $Q|q_i\rangle = q_i |q_i\rangle$.  von Neumann's argument compares the upper left and the lower right of Figure~\ref{tab:vonneumann}. The expectation value and the observed values should not be mixed up. The quantum mechanical {\it expectation value} is linear in $\alpha$ and $\beta_i$, while the {\it observed value}, $\alpha \pm |\bm{\beta}|$ is not linear in them, but there is nothing wrong. What should be compared are the quantum mechanical expectation value and the averaged value over $\lambda$. The hidden variable theory is built up so that it gives the same results as standard quantum mechanics \emph{on average}.  The unique feature of the quantum theory is that \emph{it has no \textbf{non-averaged} underlying theory}.  Therefore it makes no sense to compare quantum mechanics and hidden variable theories until the latter has been averaged over.
 
 
-\section{Jauch and Piron}
+\subsection{The Argument of Jauch \& Piron}
+
 A projection operator $P$ is an operator on a vector space such that
 $P^2 = P$. The zero and the unit operator obviously satisfy this
 condition.\todo{Is $\bm{\alpha}$ any vector?}
